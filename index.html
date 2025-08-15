@@ -1,72 +1,235 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Lumiere Games and Software and Software</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lumiere Games</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body { font-family: sans-serif; background: #000; color: #fff; padding: 40px; line-height: 1.6; max-width: 600px; margin: auto; }
-    h1 { font-size: 2em; }
-    a { color: #33f; }
-    footer { margin-top: 60px; font-size: 0.8em; color: #aaa; }
+    :root {
+      --neon-blue: rgb(42, 100, 246);
+      --bg-dark: #0A0F1F;
+      --text-light: #f5f5f5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      position: relative;
+    }
+
+    /* Stars layer */
+    #stars-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px; height: 2px;
+      border-radius: 50%;
+      background: white;
+      opacity: 0.3;
+      animation: twinkle 3s infinite ease-in-out alternate;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.2; }
+      50% { opacity: 0.8; }
+      100% { opacity: 0.2; }
+    }
+
+    /* Meteors / Kayan yıldız */
+    .meteor {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      transform: translateX(0) translateY(0);
+    }
+
+    @keyframes meteorMove {
+      0% { transform: translateX(0) translateY(0); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateX(800px) translateY(400px); opacity: 0; }
+    }
+
+    /* Logo */
+    .logo {
+      position: relative;
+      top: 32px;
+      left: 32px;
+      font-weight: 600;
+      font-size: 18px;
+      color: #FFD700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      z-index: 2;
+      text-shadow: 0 0 6px rgba(255,255,255,0.3),
+                   0 0 12px rgba(255,215,0,0.3),
+                   0 0 20px rgba(255,215,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+      text-shadow: 0 0 12px rgba(255,255,255,0.5),
+                   0 0 24px rgba(255,215,0,0.6),
+                   0 0 32px rgba(255,215,0,0.4);
+      transform: scale(1.05);
+    }
+
+    /* Container içeriği logodan aşağı başlasın */
+    .container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 200px 20px 40px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      flex-direction: column;
+    }
+
+    .content {
+      max-width: 680px;
+      margin-bottom: 60px;
+    }
+
+    h1 {
+      font-size: 52px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      line-height: 1.2;
+      color: #FFD700;
+      text-shadow: 0 0 12px rgba(255,255,255,0.25),
+                   0 0 24px rgba(255,215,0,0.5);
+    }
+
+    p {
+      font-size: 22px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      color: #E0E0E0;
+      text-shadow: 0 0 6px rgba(26,43,60,0.6),
+                   0 0 12px rgba(26,43,60,0.4);
+    }
+
+    .button {
+      display: inline-block;
+      background: linear-gradient(135deg, #3A7BD5, #00D2FF);
+      color: #FFFFFF;
+      font-weight: bold;
+      font-size: 1.2rem;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 210, 255,0.4);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      margin: 8px;
+    }
+
+    .button:hover {
+      box-shadow: 0 6px 20px rgba(0,210,255,0.6);
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 14px;
+      color: #999999;
+      text-align: center;
+    }
+
+    .footer span {
+      user-select: none;
+    }
+
+    .footer a {
+      color: var(--neon-blue);
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 36px; }
+      p { font-size: 16px; }
+    }
+
   </style>
 </head>
 <body>
-  <h1>Lumiere Games and Software</h1>
-  <p>We create elegant, innovative mobile games. Based in Paris.</p>
+  <div id="stars-container"></div>
 
-  <h2>Privacy Policy</h2>
-  <p>Lumiere Games and Software SAS
+  <div class="logo">Lumiere Games</div>
 
-We at Lumiere Games and Software respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and share your data when you use our mobile games/applications and website (collectively referred to as the “Services”).
+  <div class="container">
+    <div class="content">
+      <h1>Developing & Publishing</h1>
+      <p>We develop and publish engaging and accessible mobile games designed for long-lasting player enjoyment.</p>
+      <a class="button" href="mailto:lumieregamesfr@gmail.com">Contact Us</a>
+    </div>
 
-1. Data We Collect
-We may collect the following types of information:
-Device Information: IP address, device type, operating system, language, country, advertising ID (IDFA/GAID), and other technical identifiers.
-Usage Data: Time spent in-game, level progress, in-app purchases, ads viewed, and gameplay behavior.
-Support & Contact Info: If you contact us (e.g., via email or support form), we may collect your email address and any data you provide.
+    <div class="footer">
+      <span>© 2025 Lumiere Games & Software. All rights reserved.</span>
+      <br><br>
+      <a href="privacypolicy.html">Privacy Policy</a>
+      <a href="termsofuse.html">Terms of Use</a>
+    </div>
+  </div>
 
-2. How We Use Your Data
-We use your data to:
-- Operate and improve our games and Services
-- Analyze user behavior and game performance
-- Show relevant ads and limit repetitive ones
-- Respond to user inquiries and provide support
-- Fulfill legal obligations
+  <script>
+    // Yıldızlar
+    const starsContainer = document.getElementById('stars-container');
+    for(let i=0; i<100; i++){
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * window.innerHeight + 'px';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.animationDuration = (2 + Math.random() * 3) + 's';
+      starsContainer.appendChild(star);
+    }
 
-3. Third-Party Services
-We may share limited data (such as your device ID or usage data) with trusted partners for analytics, advertising, and crash reporting. These partners may include:
-- Google Analytics / Firebase
-- Unity / IronSource / AppLovin / AdMob
-- Apple / Google Play (for payments and updates)
-These partners may use cookies, SDKs, or other technologies. Please refer to their privacy policies for more info.
+    // Nadiren kayan yıldız / göktaşı
+    function createMeteor() {
+      const meteor = document.createElement('div');
+      meteor.className = 'meteor';
+      meteor.style.top = Math.random() * window.innerHeight * 0.5 + 'px'; // üst yarı
+      meteor.style.left = '-20px';
+      meteor.style.width = (1 + Math.random()*2) + 'px';
+      meteor.style.height = (1 + Math.random()*2) + 'px';
+      meteor.style.animation = `meteorMove ${2 + Math.random()*2}s linear forwards`;
+      document.body.appendChild(meteor);
+      setTimeout(() => meteor.remove(), 4000); // animasyon sonunda sil
+    }
 
-3.1 In-App Purchases
-All in-app purchases are processed securely through the Apple App Store or Google Play Store. We do not collect or store your name, credit card information, or billing address. We only receive confirmation from the platform that a purchase has been completed, along with the type of item purchased, to deliver the content within the game.
-
-4. Your Rights & Choices
-You can opt out of personalized ads via your device settings:
-- On iOS: Settings > Privacy > Advertising > Limit Ad Tracking
-- On Android: Settings > Google > Ads > Opt out of Ads Personalization
-You may request deletion of your personal data by contacting us at: lumieregamesfr@gmail.com
-
-5. Data Retention
-We store your data only as long as necessary to provide our Services, comply with legal obligations, or resolve disputes. Unused or unnecessary data is regularly deleted.
-
-6. Security
-We implement reasonable measures to protect your data but cannot guarantee complete security due to the nature of the internet and mobile platforms.
-
-7. Children
-Our Services are not intended for children under 13 (or under 16 in some regions). We do not knowingly collect data from children without parental consent.
-
-8. Changes to This Policy
-We may update this Privacy Policy from time to time. Changes will be posted on this page with the new “Last Updated” date. Continued use of our Services means you accept the changes.</p>
-
-  <h2>Terms & Conditions</h2>
-  <p>By using our games or website, you accept our terms. All rights reserved. Lumiere Games and Software may update these terms at any time.</p>
-
-  <footer>Contact: lumieregamesfr@gmail.com
-</footer>
+    // Meteors nadiren oluşturulsun
+    setInterval(() => {
+      if(Math.random() < 0.02){ // %2 ihtimalle her 100ms’de = nadir
+        createMeteor();
+      }
+    }, 100);
+  </script>
 </body>
 </html>

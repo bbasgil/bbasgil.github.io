@@ -1,65 +1,202 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Privacy Policy - Lumiere Games</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { font-family: sans-serif; background: #000; color: #fff; padding: 40px; line-height: 1.6; max-width: 600px; margin: auto; }
-    h1 { font-size: 2em; }
-    a { color: #33f; }
-    footer { margin-top: 60px; font-size: 0.8em; color: #aaa; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy Policy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --neon-blue: rgb(42, 100, 246); /* sadece şirket ismi ve linkler */
+    --gold: #FFD700; /* ana başlıklar ve küçük başlıklar */
+    --bg-dark: #0A0F1F;
+    --text-light: #E0E0E0;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body {
+    height:100%;
+    width:100%;
+    font-family:'Inter', sans-serif;
+    overflow-x:hidden;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    position:relative;
+  }
+
+  /* Arkaplan yıldızlar */
+  #stars-container { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+  .star { position:absolute; width:2px; height:2px; border-radius:50%; background:white; opacity:0.3; animation: twinkle 3s infinite ease-in-out alternate; }
+  @keyframes twinkle { 0% {opacity:0.2;} 50% {opacity:0.8;} 100% {opacity:0.2;} }
+
+  /* Nadiren kayan yıldız / meteor */
+  .meteor { position:absolute; width:2px; height:2px; background:white; border-radius:50%; opacity:0.8; }
+  @keyframes meteorMove { 0% {transform:translateX(0) translateY(0); opacity:0;} 10%{opacity:1;} 100%{transform:translateX(800px) translateY(400px); opacity:0;} }
+
+  /* Container: Şeffaf blur efekti */
+  .container {
+    position: relative;
+    max-width: 900px;
+    margin: 80px auto 60px;
+    background-color: rgb(22, 26, 39); /* daha şeffaf */
+    backdrop-filter: blur(18px); /* cam gibi blur */
+    border-radius: 15px;
+    padding: 50px 40px;
+    z-index:2;
+    box-shadow: 0 0 30px rgba(0,0,0,0.2);
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 36px;
+    margin-bottom: 24px;
+    color: var(--gold);
+    text-shadow: 0 0 8px rgba(255,215,0,0.4);
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 12px;
+    color: var(--gold);
+    text-shadow: 0 0 6px rgba(255,215,0,0.3);
+  }
+
+  /* Sadece şirket ismi neon mavi */
+  .company-name { color: var(--neon-blue); text-shadow: 0 0 6px rgba(42,100,246,0.5); font-weight:700; }
+
+  p, li { font-weight: 400; font-size: 16px; line-height: 1.6; margin-bottom: 12px; }
+  ul { margin-left: 20px; margin-bottom:20px; }
+
+  a { color: var(--neon-blue); text-decoration:none; transition:0.3s; font-weight:600; }
+  a:hover { text-decoration:underline; }
+
+  .copyright { text-align: center; margin-top: 40px; padding: 20px 10px; font-size: 14px; color: #777; user-select:none; }
+
+  @media (max-width:600px){
+    .container { margin:40px 15px 40px; padding:30px 20px; }
+    h1{font-size:28px;} h3{font-size:18px;} p, li{font-size:14px;}
+  }
+</style>
 </head>
 <body>
-  <h1>Privacy Policy</h1>
-  <p>Lumiere Games and Software SAS
+  <div id="stars-container"></div>
 
-We at Lumiere Games and Software respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and share your data when you use our mobile games/applications and website (collectively referred to as the “Services”).
+  <div class="container" role="main" aria-label="Privacy Policy">
+    <h1>Privacy Policy</h1>
 
-1. Data We Collect
-We may collect the following types of information:
-Device Information: IP address, device type, operating system, language, country, advertising ID (IDFA/GAID), and other technical identifiers.
-Usage Data: Time spent in-game, level progress, in-app purchases, ads viewed, and gameplay behavior.
-Support & Contact Info: If you contact us (e.g., via email or support form), we may collect your email address and any data you provide.
+    <h3>Last Updated: Aug 15, 2025</h3>
 
-2. How We Use Your Data
-We use your data to:
-- Operate and improve our games and Services
-- Analyze user behavior and game performance
-- Show relevant ads and limit repetitive ones
-- Respond to user inquiries and provide support
-- Fulfill legal obligations
+    <p><strong class="company-name">Lumiere Games And Software Sasu</strong></p>
+    <p>We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, store, and share information when you use our mobile games, mobile applications, and website (collectively referred to as the “Services”). Please read carefully to understand your rights and how we protect your data.</p>
 
-3. Third-Party Services
-We may share limited data (such as your device ID or usage data) with trusted partners for analytics, advertising, and crash reporting. These partners may include:
-- Google Analytics / Firebase
-- Unity / IronSource / AppLovin / AdMob
-- Apple / Google Play (for payments and updates)
-These partners may use cookies, SDKs, or other technologies. Please refer to their privacy policies for more info.
+    <h3>1. Data We Collect</h3>
+    <ul>
+      <li><strong>Device Information:</strong> IP address, device type, operating system, language, country, device identifiers (IDFA/GAID), screen resolution, and other technical information.</li>
+      <li><strong>Usage Data:</strong> Gameplay activity, level progress, achievements, in-app purchases, ads viewed, session duration, and interactions within the Services.</li>
+      <li><strong>Account Information:</strong> Email address or account registration information if you create an account or subscribe to newsletters.</li>
+      <li><strong>Support & Contact Info:</strong> If you contact us, we may collect your name, email address, and message content.</li>
+      <li><strong>Cookies & Analytics:</strong> Cookies, SDKs, or other tracking technologies for analytics and performance monitoring.</li>
+    </ul>
 
-3.1 In-App Purchases
-All in-app purchases are processed securely through the Apple App Store or Google Play Store. We do not collect or store your name, credit card information, or billing address. We only receive confirmation from the platform that a purchase has been completed, along with the type of item purchased, to deliver the content within the game.
+    <h3>2. How We Use Your Data</h3>
+    <ul>
+      <li>To operate, maintain, and improve our Services and game functionality.</li>
+      <li>To personalize and enhance your experience within our apps.</li>
+      <li>To provide customer support and respond to inquiries.</li>
+      <li>To analyze game performance and usage trends.</li>
+      <li>To display relevant ads and limit repetitive ad exposure.</li>
+      <li>To comply with legal obligations and prevent fraud or abuse.</li>
+      <li>To conduct research and statistical analysis for new features or games.</li>
+      <li>To communicate important updates, marketing, or promotional information if you consent.</li>
+    </ul>
 
-4. Your Rights & Choices
-You can opt out of personalized ads via your device settings:
-- On iOS: Settings > Privacy > Advertising > Limit Ad Tracking
-- On Android: Settings > Google > Ads > Opt out of Ads Personalization
-You may request deletion of your personal data by contacting us at: lumieregamesfr@gmail.com
+    <h3>3. Third-Party Services</h3>
+    <p>We may share limited information with trusted third parties for analytics, advertising, and app performance purposes:</p>
+    <ul>
+      <li>AppLovin Corporation - <a href="https://www.applovin.com/privacy/" target="_blank">Their Privacy Policy</a></li>
+      <li>Unity Technologies (Unity Ads) - <a href="https://unity3d.com/legal/privacy-policy" target="_blank">Their Privacy Policy</a></li>
+      <li>Google LLC (Google Ads) - <a href="https://policies.google.com/privacy" target="_blank">Their Privacy Policy</a></li>
+      <li>Crash reporting and analytics providers (e.g., Firebase, GameAnalytics)</li>
+      <li>Cloud service providers (e.g., AWS, Google Cloud) for hosting and storage</li>
+    </ul>
 
-5. Data Retention
-We store your data only as long as necessary to provide our Services, comply with legal obligations, or resolve disputes. Unused or unnecessary data is regularly deleted.
+    <h3>4. Cookies & Similar Technologies</h3>
+    <p>We use cookies and similar technologies to provide, monitor, and improve our Services. Cookies may be used to:</p>
+    <ul>
+      <li>Remember preferences and settings.</li>
+      <li>Analyze user behavior and performance metrics.</li>
+      <li>Provide relevant advertisements.</li>
+      <li>Detect and prevent fraud or security threats.</li>
+    </ul>
+    <p>You can manage cookie preferences in your device settings or browser.</p>
 
-6. Security
-We implement reasonable measures to protect your data but cannot guarantee complete security due to the nature of the internet and mobile platforms.
+    <h3>5. In-App Purchases</h3>
+    <p>All in-app purchases are securely processed via Apple App Store or Google Play Store. We do not collect or store your credit card or billing information. We only receive confirmation that a purchase was completed to deliver the purchased content.</p>
 
-7. Children
-Our Services are not intended for children under 13 (or under 16 in some regions). We do not knowingly collect data from children without parental consent.
+    <h3>6. User Rights</h3>
+    <ul>
+      <li>Access, update, or delete your data by contacting us.</li>
+      <li>Opt out of personalized advertising:</li>
+        <ul>
+          <li>iOS: Settings > Privacy > Advertising > Limit Ad Tracking</li>
+          <li>Android: Settings > Google > Ads > Opt out of Ads Personalization</li>
+        </ul>
+      <li>Withdraw consent for certain data collection where applicable.</li>
+      <li>Request data portability (receive your data in machine-readable format).</li>
+      <li>File a complaint with your local data protection authority if your rights are violated.</li>
+    </ul>
 
-8. Changes to This Policy
-We may update this Privacy Policy from time to time. Changes will be posted on this page with the new “Last Updated” date. Continued use of our Services means you accept the changes.</p>
-  <p>We recommend users review the privacy policies of those third-party services.</p>
-  <footer><a href="index.html">← Back to Home</a></footer>
+    <h3>7. Data Retention</h3>
+    <p>We retain personal data only as long as necessary to provide Services, comply with legal obligations, resolve disputes, or enforce agreements. Unused or unnecessary data is regularly deleted or anonymized.</p>
+
+    <h3>8. Data Security</h3>
+    <p>We implement reasonable technical and organizational measures to protect your data from unauthorized access, alteration, disclosure, or destruction. However, no method of electronic transmission or storage is completely secure.</p>
+
+    <h3>9. Children</h3>
+    <p>Our Services are not intended for children under 13 (or under 16 in certain regions). We do not knowingly collect personal data from children without parental consent. If we become aware of such data, we take steps to delete it promptly.</p>
+
+    <h3>10. International Data Transfers</h3>
+    <p>Some of our servers and partners may operate outside your country. By using our Services, you consent to the transfer of your data to countries with different data protection laws. We ensure appropriate safeguards are in place.</p>
+
+    <h3>11. Changes to This Policy</h3>
+    <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with a new “Last Updated” date. Continued use of the Services constitutes acceptance of the updated policy.</p>
+
+    <h3>12. Contact Us</h3>
+    <p>If you have any questions about this Privacy Policy or your data, please contact us:</p>
+    <p><li>Email: <a href="mailto:lumieregamesfr@gmail.com">lumieregamesfr@gmail.com</a></li></p>
+  </div>
+
+  <div class="copyright" aria-label="Copyright Notice">
+    © 2025 Lumiere Games & Software. All rights reserved.
+  </div>
+
+  <script>
+    // Yıldızlar
+    const starsContainer = document.getElementById('stars-container');
+    for(let i=0;i<100;i++){
+      const star = document.createElement('div');
+      star.className='star';
+      star.style.top=Math.random()*window.innerHeight+'px';
+      star.style.left=Math.random()*window.innerWidth+'px';
+      star.style.animationDuration=(2+Math.random()*3)+'s';
+      starsContainer.appendChild(star);
+    }
+
+    // Nadiren kayan yıldız
+    function createMeteor(){
+      const meteor=document.createElement('div');
+      meteor.className='meteor';
+      meteor.style.top=Math.random()*window.innerHeight*0.5+'px';
+      meteor.style.left='-20px';
+      meteor.style.width=(1+Math.random()*2)+'px';
+      meteor.style.height=(1+Math.random()*2)+'px';
+      meteor.style.animation=`meteorMove ${2+Math.random()*2}s linear forwards`;
+      document.body.appendChild(meteor);
+      setTimeout(()=>meteor.remove(),4000);
+    }
+    setInterval(()=>{ if(Math.random()<0.02){ createMeteor(); } },100);
+  </script>
 </body>
 </html>
